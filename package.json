@@ -1,0 +1,39 @@
+{
+  "name": "paradise",
+  "version": "1.0.0",
+  "description": "This is my life, this is my work!",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --colors --config webpack.pro.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxmancc/paradise.git"
+  },
+  "author": "Zhangkai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxmancc/paradise/issues"
+  },
+  "homepage": "https://github.com/maxmancc/paradise#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.118",
+    "clean-webpack-plugin": "^1.0.0",
+    "css-loader": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.26.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
