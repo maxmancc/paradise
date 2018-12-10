@@ -19,8 +19,13 @@ module.exports = {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: 'awesome-typescript-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                enforce: "pre",
+                use: "source-map-loader"
             },
             {
                 test: /\.css$/,
@@ -43,13 +48,37 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    },
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new HtmlWebpackPlugin({
             title: 'paradises'
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common' // 指定公共 bundle 的名称。
         })
     ],
+    optimization: {
+        splitChunks: {
+            chunks: 'async',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: 'common',
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
+    }
 };
